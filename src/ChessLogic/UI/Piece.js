@@ -15,6 +15,7 @@ const Piece = (props) => {
 	const thisWhiteKingInCheck = props.id === "wk1" && props.whiteKingInCheck;
 	const thisBlackKingInCheck = props.id === "bk1" && props.blackKingInCheck;
 
+  // This will be removed later on when the chess logic has been completed
 	// console.log("this piece ID:" + props.thisPieceTargetId)
 	// console.log("dragged piece ID:" + props.draggedPieceTargetId)
 	return (
