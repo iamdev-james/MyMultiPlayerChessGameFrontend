@@ -2,7 +2,7 @@ import React from "react";
 import { Redirect } from "react-router-dom";
 import uuid from "uuid/v4";
 import { ColorContext } from "../Context/ColorContext";
-// const socket = require("../connection/socket").socket;
+const socket = require("../ConnectionLogic/SocketConnect").socket;
 
   /******************************************/
     /* Onboard is where we create the virtual game room. */
@@ -34,7 +34,7 @@ class CreateNewGame extends React.Component {
 		});
 
 		// emit an event to the server to create a new game room
-		// socket.emit("createNewGame", newGameRoomId);
+		socket.emit("createNewGame", newGameRoomId);
 	};
 
 	typingUserName = () => {
@@ -131,30 +131,3 @@ const Onboard = (props) => {
 };
 
 export default Onboard;
-
-{/* <p className="text-2xl text-white">
-							Your Username:
-						</p>
-
-						<input
-							ref={this.textArea}
-							onInput={this.typingUserName}
-						></input>
-
-						<button
-							className="btn btn-primary"
-							disabled={!(this.state.inputText.length > 0)}
-							onClick={() => {
-								// When the 'Submit' button gets pressed from the username screen,
-								// We should send a request to the server to create a new room with
-								// the uuid we generate here.
-								this.props.didRedirect();
-								this.props.setUserName(this.state.inputText);
-								this.setState({
-									didGetUserName: true,
-								});
-								this.send();
-							}}
-						>
-							Submit
-						</button> */}
