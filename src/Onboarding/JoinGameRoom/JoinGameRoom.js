@@ -1,6 +1,6 @@
 import React from "react";
-import JoinGame from "./joingame";
-import ChessGame from "../chess/ui/chessgame";
+import JoinGame from "../JoinGame/JoinGame";
+import ChessGame from "../../ChessLogic/UI/ChessGame";
 
 /**
  * Onboard is where we create the game room.

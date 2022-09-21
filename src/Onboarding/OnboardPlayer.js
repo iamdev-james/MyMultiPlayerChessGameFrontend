@@ -1,4 +1,6 @@
 import React from "react";
+// Importing CSS file
+import './OnboardPlayer.css'
 import { Redirect } from "react-router-dom";
 import uuid from "uuid/v4";
 import { ColorContext } from "../Context/ColorContext";
@@ -8,8 +10,6 @@ const socket = require("../ConnectionLogic/SocketConnect").socket;
     /* Onboard is where we create the virtual game room. */
   /*********************************************/
 
-// Importing CSS file
-import './OnboardPlayer.css'
 
 class CreateNewGame extends React.Component {
 	state = {
@@ -45,7 +45,6 @@ class CreateNewGame extends React.Component {
 		this.setState({
 			inputText: typedText,
 		});
-    console.log(typedText)
 	};
 
 	render() {
