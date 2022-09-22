@@ -349,36 +349,56 @@ const ChessGameWrapper = (props) => {
 					<h1 style={{ textAlign: "center", marginTop: "200px" }}> :( </h1>
 				</div>
 			) : (
-				<div>
-					<h1
-						style={{
-							textAlign: "center",
-							marginTop: String(window.innerHeight / 8) + "px",
-						}}
-					>
-						Hey <strong>{props.myUserName}</strong>, copy and paste the URL
-						below to send to your friend:
-					</h1>
-					<textarea
-						style={{
-							marginLeft: String(window.innerWidth / 2 - 290) + "px",
-							marginTop: "30" + "px",
-							width: "580px",
-							height: "30px",
-						}}
-						onFocus={(event) => {
-							console.log("sd");
-							event.target.select();
-						}}
-						value={domainName + "/game/" + gameid}
-						type="text"
-					></textarea>
-					<br></br>
+				<div
+					className=""
+					style={{
+						height: "100vh",
+						width: "100vw",
+						backgroundImage:
+							"url('https://cdn.dribbble.com/users/1784672/screenshots/16292048/media/74d761c94f2c456ad7e6311a91185c39.png')",
+						backgroundSize: "cover",
+						backgroundPosition: "center center",
+						backgroundRepeat: "no-repeat",
+						display: "flex",
+						flexDirection: "column",
+						justifyContent: "center",
+						alignItems: "center",
+					}}
+				>
+					<div className="container">
+						<p style={{
+              fontSize: '25px',
+              marginBottom: '20%'
+            }}>
+							Hey <strong>{props.myUserName}</strong>, copy and paste the URL
+							below to send to your friend:
+						</p>
+						<textarea
+              style={{
+                width: '80%',
+                height: '15%',
+                borderRadius: '10px',
+                fontSize: '17px',
+                padding: '8px'
+              }}
+							onFocus={(event) => {
+								console.log("sd");
+								event.target.select();
+							}}
+							value={domainName + "/game/" + gameid}
+							type="text"
+						></textarea>
+						<br></br>
 
-					<h1 style={{ textAlign: "center", marginTop: "100px" }}>
-						{" "}
-						Waiting for other opponent to join the game...{" "}
-					</h1>
+						<p style={{
+              fontSize: '23px',
+              marginTop: '10%',
+              fontWeight: '500'
+            }}>
+							{" "}
+							Waiting for other opponent to join the game...{" "}
+						</p>
+					</div>
 				</div>
 			)}
 		</React.Fragment>
