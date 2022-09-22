@@ -1,6 +1,6 @@
 import React from "react";
-import JoinGame from "./joingame";
-import ChessGame from "../chess/ui/chessgame";
+import JoinGame from "../JoinGame/JoinGame";
+import ChessGame from "../../ChessLogic/UI/ChessGame";
 
 /**
  * Onboard is where we create the game room.
@@ -36,45 +36,52 @@ class JoinRoom extends React.Component {
 						<ChessGame myUserName={this.state.inputText} />
 					</React.Fragment>
 				) : (
-					<div>
-						<h1
-							style={{
-								textAlign: "center",
-								marginTop: String(window.innerHeight / 3) + "px",
-							}}
-						>
-							Your Username:
-						</h1>
-
-						<input
-							style={{
-								marginLeft: String(window.innerWidth / 2 - 120) + "px",
-								width: "240px",
-								marginTop: "62px",
-							}}
-							ref={this.textArea}
-							onInput={this.typingUserName}
-						></input>
-
-						<button
-							className="btn btn-primary"
-							style={{
-								marginLeft: String(window.innerWidth / 2 - 60) + "px",
-								width: "120px",
-								marginTop: "62px",
-							}}
-							disabled={!(this.state.inputText.length > 0)}
-							onClick={() => {
-								// When the 'Submit' button gets pressed from the username screen,
-								// We should send a request to the server to create a new room with
-								// the uuid we generate here.
-								this.setState({
-									didGetUserName: true,
-								});
-							}}
-						>
-							Submit
-						</button>
+					<div
+						className=""
+						style={{
+							height: "100vh",
+							width: "100vw",
+							backgroundImage:
+								"url('https://cdn.dribbble.com/users/1784672/screenshots/16292048/media/74d761c94f2c456ad7e6311a91185c39.png')",
+							backgroundSize: "cover",
+							backgroundPosition: "center center",
+							backgroundRepeat: "no-repeat",
+							display: "flex",
+							flexDirection: "column",
+							justifyContent: "center",
+							alignItems: "center",
+						}}
+					>
+						<div className="container">
+							<div>
+								<p className="form-header">Multiplayer Chess board</p>
+								<p className="form-sub">
+									Hello, you have been invited by your friend to play chess, input your username to start game
+								</p>
+							</div>
+							<div className="username-container">
+								<p>Your Username:</p>
+								<input
+									placeholder="Enter your username"
+									ref={this.textArea}
+									onInput={this.typingUserName}
+								></input>
+							</div>
+							<button
+								className="start-button"
+								disabled={!(this.state.inputText.length > 0)}
+								onClick={() => {
+									// When the 'Submit' button gets pressed from the username screen,
+									// We should send a request to the server to create a new room with
+									// the uuid we generate here.
+									this.setState({
+										didGetUserName: true,
+									});
+								}}
+							>
+								Submit
+							</button>
+						</div>
 					</div>
 				)}
 			</React.Fragment>

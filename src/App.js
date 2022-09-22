@@ -1,10 +1,10 @@
 import React, {useCallback, useState } from 'react';
 import { BrowserRouter as Router, Route, Redirect, Switch } from 'react-router-dom';
-// import JoinRoom from './onboard/joinroom'
+import JoinRoom from './Onboarding/JoinGameRoom/JoinGameRoom'
 import { ColorContext } from './Context/ColorContext'
 import Onboard from './Onboarding/OnboardPlayer'
-// import JoinGame from './onboard/joingame'
-// import ChessGame from './chess/ui/chessgame'
+import JoinGame from './Onboarding/JoinGame/JoinGame'
+import ChessGame from './ChessLogic/UI/ChessGame'
 /*
  *  Frontend flow: 
  * 
@@ -53,7 +53,7 @@ function App() {
           <Route path = "/" exact>
             <Onboard setUserName = {setUserName}/>
           </Route>
-          {/* <Route path = "/game/:gameid" exact>
+          <Route path = "/game/:gameid" exact>
             {didRedirect ? 
               <React.Fragment>
                     <JoinGame userName = {userName} isCreator = {true} />
@@ -61,7 +61,7 @@ function App() {
               </React.Fragment> 
               :
               <JoinRoom />}
-          </Route> */}
+          </Route>
           <Redirect to = "/" />
         </Switch>
       </Router>

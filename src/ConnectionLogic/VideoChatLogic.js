@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
 import Peer from "simple-peer";
 import styled from "styled-components";
-const socket  = require('../connection/socket').socket
+const socket  = require('../ConnectionLogic/SocketConnect').socket
 
 
 const Container = styled.div`
