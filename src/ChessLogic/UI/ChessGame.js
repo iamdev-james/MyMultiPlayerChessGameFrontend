@@ -7,7 +7,7 @@ import useSound from "use-sound";
 import chessMove from "../assets/moveSoundEffect.mp3";
 import Piece from "./Piece";
 import piecemap from "./PieceMap";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { ColorContext } from "../../Context/ColorContext";
 import VideoChatApp from "../../ConnectionLogic/VideoChatLogic";
 const socket = require("../../ConnectionLogic/SocketConnect").socket;
@@ -257,6 +257,8 @@ const ChessGameWrapper = (props) => {
 
 	// get the gameId from the URL here and pass it to the chessGame component as a prop.
 	const domainName = "http://localhost:3000";
+  // Setting up history mode
+  const history = useHistory();
 	const color = React.useContext(ColorContext);
 	const { gameid } = useParams();
 	const [play] = useSound(chessMove);
@@ -345,8 +347,42 @@ const ChessGameWrapper = (props) => {
 					<h4> You: {props.myUserName} </h4>
 				</div>
 			) : gameSessionDoesNotExist ? (
-				<div>
-					<h1 style={{ textAlign: "center", marginTop: "200px" }}> :( </h1>
+				<div
+          className=""
+          style={{
+            height: "100vh",
+            width: "100vw",
+            backgroundImage:
+              "url('https://cdn.dribbble.com/users/1784672/screenshots/16292048/media/74d761c94f2c456ad7e6311a91185c39.png')",
+            backgroundSize: "cover",
+            backgroundPosition: "center center",
+            backgroundRepeat: "no-repeat",
+            display: "flex",
+            flexDirection: "column",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              justifyContent: 'center'
+            }}
+            className="container"
+          >
+            <p
+              style={{
+                fontSize: '23px',
+                fontWeight: '600'
+              }}
+            >Oops, this game session does not exist or has expired</p>
+            <button
+            onClick={() => (
+              history.push(domainName)
+            )}
+            className="start-button">
+              Back home
+            </button>
+					</div>
 				</div>
 			) : (
 				<div
@@ -367,22 +403,23 @@ const ChessGameWrapper = (props) => {
 				>
 					<div className="container">
 						<p style={{
-              fontSize: '25px',
-              marginBottom: '20%'
+              fontSize: '23px',
+              fontWeight: '600',
+              marginBottom: '12%'
             }}>
-							Hey <strong>{props.myUserName}</strong>, copy and paste the URL
+							Hey <strong>{props.myUserName}</strong>, copy the URL
 							below to send to your friend:
 						</p>
 						<textarea
               style={{
                 width: '80%',
-                height: '15%',
+                height: '14%',
                 borderRadius: '10px',
                 fontSize: '17px',
-                padding: '8px'
+                padding: '8px',
+                outline: 'none'
               }}
 							onFocus={(event) => {
-								console.log("sd");
 								event.target.select();
 							}}
 							value={domainName + "/game/" + gameid}
@@ -393,7 +430,7 @@ const ChessGameWrapper = (props) => {
 						<p style={{
               fontSize: '23px',
               marginTop: '10%',
-              fontWeight: '500'
+              fontWeight: '550'
             }}>
 							{" "}
 							Waiting for other opponent to join the game...{" "}
