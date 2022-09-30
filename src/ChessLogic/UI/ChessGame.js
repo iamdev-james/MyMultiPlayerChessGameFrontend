@@ -194,7 +194,7 @@ class ChessGame extends React.Component {
             Look at the current game state in the model and populate the UI accordingly
         */
 		// console.log(this.state.gameState.getBoard())
-
+		document.body.style.zoom = "85%";
 		return (
 			<React.Fragment>
 				<div
