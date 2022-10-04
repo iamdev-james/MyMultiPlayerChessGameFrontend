@@ -102,10 +102,8 @@ function VideoChatApp(props) {
 				style={{
           width: "25%",
           height: "15%",
-          position: "absolute",
-          top: '10',
-          right: '0',
-          borderRadius: '20px'
+          marginTop: "",
+          borderRadius: '5px'
         }}
 			/>
 		);
@@ -124,17 +122,19 @@ function VideoChatApp(props) {
 		);
 	} else if (receivingCall) {
 		mainView = (
-			<div>
-				<h1>{props.opponentUserName} is calling you</h1>
-				<button onClick={acceptCall}>
-					<h1>Accept</h1>
+			<div style={{
+        marginButton: '10px'
+      }}>
+				<p className="text-white">{props.opponentUserName} is calling you</p>
+				<button className="start-button" onClick={acceptCall}>
+					Accept call
 				</button>
 			</div>
 		);
 	} else if (isCalling) {
 		mainView = (
 			<div>
-				<h1>Currently calling {props.opponentUserName}...</h1>
+				<p className="text-white">Currently calling {props.opponentUserName}...</p>
 			</div>
 		);
 	} else {
@@ -142,7 +142,6 @@ function VideoChatApp(props) {
 			<button
         className="start-button"
         style={{
-          marginTop: '50px'
         }}
 				onClick={() => {
 					callPeer(props.opponentSocketId);
@@ -155,7 +154,12 @@ function VideoChatApp(props) {
 
 	return (
 		<div>
-			<div>
+			<div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        justifyContent: 'flex-start',
+        alignItems: 'flex-end'
+      }}>
 				{mainView}
 				{UserVideo}
 			</div>
