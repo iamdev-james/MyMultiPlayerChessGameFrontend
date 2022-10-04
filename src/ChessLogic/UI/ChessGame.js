@@ -255,7 +255,7 @@ const ChessGameWrapper = (props) => {
 	 */
 
 	// get the gameId from the URL here and pass it to the chessGame component as a prop.
-	const domainName = "http://localhost:3000";
+	const domainName = window.location.origin;
   // Setting up history mode
   const history = useHistory();
 	const color = React.useContext(ColorContext);
@@ -283,7 +283,6 @@ const ChessGameWrapper = (props) => {
 
 		socket.on("status", (statusUpdate) => {
 			console.log(statusUpdate);
-			alert(statusUpdate);
 			if (
 				statusUpdate === "This game session does not exist." ||
 				statusUpdate === "There are already 2 people playing in this room."
@@ -346,7 +345,14 @@ const ChessGameWrapper = (props) => {
 							transform: 'scale(0.8)'
 						}}
 					>
-						<p> Opponent: {opponentUserName} </p>
+						<p className="text-white"
+							style={{
+								display: "inline-block",
+								background: "rgba(60, 57, 57, 0.616)",
+								padding: "10px 15px",
+								borderRadius: "10px"
+							}}
+						> Opponent: {opponentUserName} </p>
 						<div style={{ display: "flex" }}>
 							<ChessGame
 								playAudio={play}
@@ -360,7 +366,14 @@ const ChessGameWrapper = (props) => {
 								opponentUserName={opponentUserName}
 							/>
 						</div>
-						<p> You: {props.myUserName} </p>
+						<p className="text-white"
+							style={{
+								display: "inline-block",
+							  background: "rgba(60, 57, 57, 0.616)",
+								padding: "10px 15px",
+								borderRadius: "10px"
+							}}
+						> You: {props.myUserName} </p>
 					</div>
 				</div>
 			) : gameSessionDoesNotExist ? (
