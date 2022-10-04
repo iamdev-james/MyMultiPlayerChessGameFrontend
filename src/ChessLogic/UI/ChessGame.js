@@ -194,7 +194,6 @@ class ChessGame extends React.Component {
             Look at the current game state in the model and populate the UI accordingly
         */
 		// console.log(this.state.gameState.getBoard())
-
 		return (
 			<React.Fragment>
 				<div
@@ -329,22 +328,40 @@ const ChessGameWrapper = (props) => {
 	return (
 		<React.Fragment>
 			{opponentDidJoinTheGame ? (
-				<div>
-					<h4> Opponent: {opponentUserName} </h4>
-					<div style={{ display: "flex" }}>
-						<ChessGame
-							playAudio={play}
-							gameId={gameid}
-							color={color.didRedirect}
-						/>
-						<VideoChatApp
-							mySocketId={socket.id}
-							opponentSocketId={opponentSocketId}
-							myUserName={props.myUserName}
-							opponentUserName={opponentUserName}
-						/>
+				<div
+					style={{
+						height: '100vh',
+						width: '100vw',
+						backgroundImage: "url('https://cdn.dribbble.com/users/1784672/screenshots/16292048/media/74d761c94f2c456ad7e6311a91185c39.png')",
+						backgroundSize: 'cover',
+						backgroundPosition: 'center center',
+						backgroundRepeat: 'no-repeat',
+						display: 'flex',
+						justifyContent: 'center',
+						alignItems: 'center'
+					}}
+				>
+					<div 
+						style={{
+							transform: 'scale(0.8)'
+						}}
+					>
+						<p> Opponent: {opponentUserName} </p>
+						<div style={{ display: "flex" }}>
+							<ChessGame
+								playAudio={play}
+								gameId={gameid}
+								color={color.didRedirect}
+							/>
+							<VideoChatApp
+								mySocketId={socket.id}
+								opponentSocketId={opponentSocketId}
+								myUserName={props.myUserName}
+								opponentUserName={opponentUserName}
+							/>
+						</div>
+						<p> You: {props.myUserName} </p>
 					</div>
-					<h4> You: {props.myUserName} </h4>
 				</div>
 			) : gameSessionDoesNotExist ? (
 				<div
